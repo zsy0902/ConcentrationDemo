@@ -204,8 +204,8 @@ public class MainActivity extends AppCompatActivity {
         DataBean minBean2 = new DataBean("2","20","0");
         DataBean minBean3 = new DataBean("3","30","0");
         DataBean minBean4 = new DataBean("4","40","0");
-        DataBean minBean5 = new DataBean("4","1","0");
-        DataBean minBean6 = new DataBean("4","0.1","0");
+        DataBean minBean5 = new DataBean("4","50","0");
+        DataBean minBean6 = new DataBean("4","59","0");
         minBeanList.add(minBean0);
         minBeanList.add(minBean1);
         minBeanList.add(minBean2);
@@ -339,11 +339,11 @@ public class MainActivity extends AppCompatActivity {
         String message;
         View stopView = getLayoutInflater().inflate(R.layout.stop_dialog,null,false);
         //加入到布局中textview的内容
-        if(t1==0&&t2<=10)
+        if(t1==0)
             message="才专注了"+t2+"秒？就这还想要气球？给爷爬！！";
-        else if(t1==0&&t2>10)
-            message="本次仅专注了"+t2+"秒，啊这...专注达到1分钟以上才会获得气球啊bugyellow！";
-        else message="本次您专注了"+t1+"分"+t2+"秒，获得"+(int)((t1*60+t2)/10)+"个气球奖励！";
+        else if(t1>0&&t1<3)
+            message="本次仅专注了"+t2+"秒，啊这...专注达到3分钟以上才会获得气球啊bugyellow！";
+        else message="本次您专注了"+t1+"分"+t2+"秒，获得"+(int)(t1/3)+"个气球奖励！";
 
         dialog.setView(stopView);
         dialog.show();
@@ -372,11 +372,11 @@ public class MainActivity extends AppCompatActivity {
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         String message;
         View stopView = getLayoutInflater().inflate(R.layout.stop_dialog,null,false);
-        if(hour==0&&min<1)
-            message="本次仅专注了一分钟不到，啊这...专注达到1分钟以上才会获得气球啊混蛋！";
-        else if(hour==0&&min>1)
-            message="本次仅专注了"+min+"分钟，掉落"+min+"个气球";
-        else message="本次您专注了"+hour+"个小时"+min+"分"+second+"秒，获得"+(int)((min*60+second)/10)+"个气球奖励！";
+        if(hour==0&&min<3)
+            message="本次仅专注了一分钟不到，啊这...专注达到3分钟以上才会获得气球啊混蛋！";
+        else if(hour==0&&min>=3)
+            message="本次仅专注了"+min+"分钟，掉落"+(int)(min/3)+"个气球";
+        else message="本次您专注了"+hour+"个小时"+min+"分,获得"+(int)((hour*60+min)/3)+"个气球奖励！";
         dialog1.setView(stopView);
         dialog1.show();
         TextView textView=(TextView)dialog1.findViewById(R.id.textView);
@@ -401,11 +401,11 @@ public class MainActivity extends AppCompatActivity {
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         String message2;
         View suspendView = getLayoutInflater().inflate(R.layout.suspend_dialog,null,false);
-        if(t1==0&&t2<=10)
+        if(t1==0)
             message2="才专注了"+t2+"秒，还中途退出了？不是吧？就这？没有气球掉落！";
-        else if(t1==0&&t1>10)
-            message2="本次仅专注了"+t1+"分"+t2+"秒，啊这...专注达到1分钟以上才会获得气球啊混蛋！";
-        else message2="本次您专注了"+t1+"分"+t2+"秒，但是中途退出了，只获得"+(int)((t1*60+t2)/20)+"个气球奖励。";
+        else if(t1>0&&t1<3)
+            message2="本次仅专注了"+t1+"分"+t2+"秒，专注达到3分钟以上才会获得气球啊混蛋！";
+        else message2="本次您专注了"+t1+"分"+t2+"秒，但是中途退出了，仅获得"+(int)((t1*60)/5)+"个气球奖励。";
         dialog2.setView(suspendView);
         dialog2.show();
         TextView textView2=(TextView)dialog2.findViewById(R.id.textView2);
@@ -430,11 +430,11 @@ public class MainActivity extends AppCompatActivity {
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         String message3;
         View suspendView = getLayoutInflater().inflate(R.layout.suspend_dialog,null,false);
-        if(hour==0&&min<1)
-            message3="不是吧？就这？还中途退出？再见了您嘞！";
-        else if(hour==0&&min>=1)
-            message3="啊这...就"+(int)min+"分钟还中途退出，你在得意什么？？";
-        else message3="针不戳！专注长达"+hour+"小时"+(int)min+"分钟！获得"+(int)(hour*60+min)/2+"个气球！";
+        if(hour==0&&min<3)
+            message3="不是吧？就这？还中途退出？你在得意什么？？";
+        else if(hour==0&&min>=3)
+            message3="啊这...就"+(int)min+"分钟还中途退出，"+(int)(min/3)+"个气球，不能再多了！";
+        else message3="针不戳！专注长达"+hour+"小时"+(int)min+"分钟！获得"+(int)((hour*60+min)/5)+"个气球！";
         dialog3.setView(suspendView);
         dialog3.show();
         TextView textView2=(TextView)dialog3.findViewById(R.id.textView2);
