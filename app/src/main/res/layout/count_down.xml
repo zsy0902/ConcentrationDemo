@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- 这个tv 显示倒计时-->
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/text"
+            android:layout_gravity="center"
+            android:textSize="30sp"
+            android:textColor="#80FFFFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- 这个布局是选择器-->
+        <LinearLayout
+            android:id="@+id/picker"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.example.concentrationdemo.PickerScrollView
+                    android:id="@+id/hour_picker"
+                    android:layout_width="50dp"
+                    android:layout_height="200dp" />
+                <TextView
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="时"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="10dp" />
+                <com.example.concentrationdemo.PickerScrollView
+                    android:id="@+id/min_picker"
+                    android:layout_width="50dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="10dp" />
+                <TextView
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="分"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="10dp" />
+            </LinearLayout>
+
+            <Button
+                android:layout_marginTop="20dp"
+                android:background="@drawable/define"
+                android:id="@+id/btn"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+</LinearLayout>
